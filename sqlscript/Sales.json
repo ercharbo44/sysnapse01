@@ -1,0 +1,17 @@
+{
+	"name": "Sales",
+	"properties": {
+		"description": "POC Kiabi",
+		"content": {
+			"query": "SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://datalakekiabi1.dfs.core.windows.net/poc/prd/data/public/stocks/predictix/sales/sales/*.parquet',\n        FORMAT='PARQUET'\n    ) AS [r];\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "master",
+				"type": "SqlOnDemand"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

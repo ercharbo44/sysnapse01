@@ -1,0 +1,142 @@
+{
+	"name": "CopyPipeline_i7e",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_i7e",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "demo//test_data.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.nyc_taxi"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlPoolSink",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "tipped",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "tipped",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "fareAmount",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "fareAmount",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "paymentType",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "paymentType",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "passengerCount",
+									"type": "Int16"
+								},
+								"sink": {
+									"name": "passengerCount",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "tripDistance",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "tripDistance",
+									"type": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "tripTimeSecs",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "tripTimeSecs",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "pickupTimeBin",
+									"type": "String"
+								},
+								"sink": {
+									"name": "pickupTimeBin",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_i7e",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_i7e",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-10-28T15:45:22Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

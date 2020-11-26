@@ -1,0 +1,16 @@
+{
+	"name": "Kiabi_ProductH",
+	"properties": {
+		"content": {
+			"query": "DROP TABLE Kiabi.Product\nIF NOT EXISTS (SELECT * FROM sys.objects WHERE NAME = 'Product' AND TYPE = 'U')\nCREATE TABLE Kiabi.Product\n\t(\n\t sku_id varchar(30),\n\t style_id varchar(30),\n\t pdm_style_id varchar(30),\n\t color_id varchar(30),\n\t size_id varchar(30),\n\t pdt_class_id varchar(30),\n\t glt_type_id varchar(30),\n\t type_evenement varchar(30),\n\t date_integration bigint,\n\t date_evenement bigint\n\t)\nWITH\n\t(\n\tDISTRIBUTION = HASH(sku_id),\n\tCLUSTERED COLUMNSTORE INDEX\n\t)\nGO\n\n--Uncomment the 4 lines below to create a stored procedure for data pipeline orchestration​                 \n--CREATE PROC bulk_load_ProductH\n--AS\n--BEGIN\nCOPY INTO Kiabi.Product\n(sku_id 1, style_id 2, pdm_style_id 3, color_id 4, size_id 5, pdt_class_id 6, glt_type_id 7, type_evenement 8, date_integration 9, date_evenement 10)\nFROM 'https://datalakekiabi1.dfs.core.windows.net/poc/prd/data/public/stocks/predictix/product/product/'\nWITH\n(\n\tFILE_TYPE = 'PARQUET'\n\t,MAXERRORS = 0\n\t,COMPRESSION = 'snappy'\n\t,IDENTITY_INSERT = 'OFF'\n)\n--END\nGO\n\nSELECT TOP 100 * FROM Kiabi.Product\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "SQLDB1",
+				"type": "SqlPool"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

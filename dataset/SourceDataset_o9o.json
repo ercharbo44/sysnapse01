@@ -1,0 +1,110 @@
+{
+	"name": "SourceDataset_o9o",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Datalakekiabisas",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "prd/data/public/stocks/predictix/purchase_orders",
+				"fileSystem": "poc"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "order_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "receipt_dc_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "receipt_dc_arrival_date",
+				"type": "INT64"
+			},
+			{
+				"name": "receipt_dc_init_arrival_date",
+				"type": "UTF8"
+			},
+			{
+				"name": "style_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "color_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "size_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "order_unit",
+				"type": "INT64"
+			},
+			{
+				"name": "order_retail",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "order_cost",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "vendor_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "storage_dc",
+				"type": "UTF8"
+			},
+			{
+				"name": "lane_mode",
+				"type": "UTF8"
+			},
+			{
+				"name": "forwarder_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "city_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "fcr_date",
+				"type": "UTF8"
+			},
+			{
+				"name": "collection_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "fg_is_preorder",
+				"type": "INT64"
+			},
+			{
+				"name": "status_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "type_evenement",
+				"type": "UTF8"
+			},
+			{
+				"name": "date_integration",
+				"type": "INT64"
+			},
+			{
+				"name": "date_evenement",
+				"type": "INT64"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

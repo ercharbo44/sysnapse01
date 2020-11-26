@@ -1,0 +1,17 @@
+{
+	"name": "Tutotriger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2020-05-26T09:01:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}

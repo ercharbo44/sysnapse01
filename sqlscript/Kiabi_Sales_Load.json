@@ -1,0 +1,16 @@
+{
+	"name": "Kiabi_Sales_Load",
+	"properties": {
+		"content": {
+			"query": "-- type your sql script here, we now have intellisense\nCOPY INTO [Kiabi].[Sales]\n(day_id 1, style_id 2, color_id 3, size_id 4, store_id 5, sales_channel_id 6, sales_unitlong 7, currency_id 8, sales_revenue 9, sales_revenue_vat 10, sales_cost 11, sales_markdowns_pos 12, returns_unit 13, returns_retail 14, returns_cost 15, type_evenement 16, date_integration 17, date_evenement 18)\nFROM 'https://datalakekiabi1.dfs.core.windows.net/poc/prd/data/public/stocks/predictix/sales/sales/'\nWITH\n(\n\tFILE_TYPE = 'PARQUET'\n\t,MAXERRORS = 0\n\t,COMPRESSION = 'snappy'\n\t,IDENTITY_INSERT = 'OFF'\n)\n--END\nGO\n\nSELECT TOP 100 * FROM [Kiabi].[Sales]\nGO\nSELECT COUNT (*) FROM [Kiabi].[Sales]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "SQLDB1",
+				"type": "SqlPool"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,908 @@
+{
+	"name": "AzureSqlTablesmackET",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseKIABIPOC",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tablename": {
+				"type": "string",
+				"defaultValue": "smack_et"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "customer_rowid",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_create_date",
+				"type": "varchar"
+			},
+			{
+				"name": "gender",
+				"type": "varchar"
+			},
+			{
+				"name": "loyalty_card",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "loyalty_card_status",
+				"type": "varchar"
+			},
+			{
+				"name": "personnel_kiabi",
+				"type": "varchar"
+			},
+			{
+				"name": "flag_shared_loyalty_card",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_country",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_country_label",
+				"type": "varchar"
+			},
+			{
+				"name": "birthdate",
+				"type": "varchar"
+			},
+			{
+				"name": "slice_age",
+				"type": "varchar"
+			},
+			{
+				"name": "address_quality_score",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "top_has_address",
+				"type": "varchar"
+			},
+			{
+				"name": "top_has_telfixe",
+				"type": "varchar"
+			},
+			{
+				"name": "top_has_gsm",
+				"type": "varchar"
+			},
+			{
+				"name": "top_has_optinsms",
+				"type": "varchar"
+			},
+			{
+				"name": "optin_email_kiabi",
+				"type": "varchar"
+			},
+			{
+				"name": "optin_email_part",
+				"type": "varchar"
+			},
+			{
+				"name": "nb_child",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_child_boy",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_child_girl",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_child_unknown",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "first_purchase_date",
+				"type": "varchar"
+			},
+			{
+				"name": "first_ticket_date",
+				"type": "varchar"
+			},
+			{
+				"name": "first_order_date",
+				"type": "varchar"
+			},
+			{
+				"name": "most_used_tckt_pay",
+				"type": "varchar"
+			},
+			{
+				"name": "most_used_tckt_pay_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "code_store_lastpurchase",
+				"type": "varchar"
+			},
+			{
+				"name": "lati_store_lastpurchase",
+				"type": "varchar"
+			},
+			{
+				"name": "long_store_lastpurchase",
+				"type": "varchar"
+			},
+			{
+				"name": "tckt_last_purchase_date",
+				"type": "varchar"
+			},
+			{
+				"name": "order_last_purchase_date",
+				"type": "varchar"
+			},
+			{
+				"name": "last_purchase_date",
+				"type": "varchar"
+			},
+			{
+				"name": "code_store_attac",
+				"type": "varchar"
+			},
+			{
+				"name": "lati_store_attac",
+				"type": "varchar"
+			},
+			{
+				"name": "long_store_attac",
+				"type": "varchar"
+			},
+			{
+				"name": "code_store_open",
+				"type": "varchar"
+			},
+			{
+				"name": "lati_store_open",
+				"type": "varchar"
+			},
+			{
+				"name": "long_store_open",
+				"type": "varchar"
+			},
+			{
+				"name": "nb_product_tckt_maternity_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_1rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_6rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_18rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_24rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_36rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_48rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_all",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_1rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_6rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_18rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_24rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_36rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_48rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_all",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_product_order_maternity_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_1rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_6rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_18rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_24rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_36rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_48rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_all",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "most_used_order_delivery",
+				"type": "varchar"
+			},
+			{
+				"name": "nb_order_desk_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_mobile_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_other_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "most_used_order_pay",
+				"type": "varchar"
+			},
+			{
+				"name": "most_used_order_pay_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "nb_tckt_articles_1rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_articles_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_articles_all",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_articles_1rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_articles_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_tckt_return_articles_all",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_articles_1rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_articles_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "net_sales_tckt_1rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_tckt_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_tckt_all",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_tckt_return_1rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_tckt_return_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_tckt_return_all",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_order_1rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_order_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "nb_order_eresa_1rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_eresa_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_order_eresa_all",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "potentiel_net_sales_eresa_1rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "potentiel_net_sales_eresa_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "potentiel_net_sales_eresa_all",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "customer_activity_kind_1rm",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_activity_kind_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_activity_xcanal_1rm",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_activity_xcanal_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_activity_xcanal_all",
+				"type": "varchar"
+			},
+			{
+				"name": "product_groups_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "product_groups_1rm",
+				"type": "varchar"
+			},
+			{
+				"name": "product_groups_all",
+				"type": "varchar"
+			},
+			{
+				"name": "rfm_date_observation",
+				"type": "varchar"
+			},
+			{
+				"name": "rfm_min_date",
+				"type": "varchar"
+			},
+			{
+				"name": "rfm_t1",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "rfm_t2",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "rfm_t3",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "rfm_t4",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "rfm_frequence",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "rfm_sum_ca_ttc",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "rfm_scorerfm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "rfm_classerfm",
+				"type": "varchar"
+			},
+			{
+				"name": "rfm_cluster",
+				"type": "varchar"
+			},
+			{
+				"name": "cluster_style",
+				"type": "varchar"
+			},
+			{
+				"name": "net_sales_grbaby_fashion_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grbaby_basic_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grbaby_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grkids_fashion_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grkids_basic_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grkids_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grwomen_fashion_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grwomen_basic_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grwomen_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grmen_fashion_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grmen_basic_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grmen_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grunderwear_fashion_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grunderwear_basic_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grunderwear_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grshoes_fashion_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grshoes_basic_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grshoes_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_graccess_fashion_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_graccess_basic_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_graccess_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grexcluweb_fashion_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grexcluweb_basic_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_grexcluweb_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "xcanal_cluster_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "attac_store_dist",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "nearest_store",
+				"type": "varchar"
+			},
+			{
+				"name": "nearest_store_dist",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_tckt_pvi_1rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_tckt_pvi_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_order_pvi_1rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_order_pvi_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "class_grwomen",
+				"type": "varchar"
+			},
+			{
+				"name": "class_grmen",
+				"type": "varchar"
+			},
+			{
+				"name": "class_grshoes",
+				"type": "varchar"
+			},
+			{
+				"name": "class_grbaby",
+				"type": "varchar"
+			},
+			{
+				"name": "class_grexcluweb",
+				"type": "varchar"
+			},
+			{
+				"name": "class_graccess",
+				"type": "varchar"
+			},
+			{
+				"name": "class_grconsign",
+				"type": "varchar"
+			},
+			{
+				"name": "class_grhome",
+				"type": "varchar"
+			},
+			{
+				"name": "class_grkids",
+				"type": "varchar"
+			},
+			{
+				"name": "class_grunderwear",
+				"type": "varchar"
+			},
+			{
+				"name": "first_purchase_canal",
+				"type": "varchar"
+			},
+			{
+				"name": "slice_first_purchase_date",
+				"type": "varchar"
+			},
+			{
+				"name": "score_mixite",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "main_appetence",
+				"type": "varchar"
+			},
+			{
+				"name": "secondary_appetence",
+				"type": "varchar"
+			},
+			{
+				"name": "marketappetence",
+				"type": "varchar"
+			},
+			{
+				"name": "departmentappetence",
+				"type": "varchar"
+			},
+			{
+				"name": "net_sales_tckt_6rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_tckt_18rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_tckt_24rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_tckt_36rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_order_6rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_order_18rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_order_24rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_order_36rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_order_all",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "nb_etckt_1rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_etckt_6rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_etckt_12rm",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "nb_etckt_all",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "net_sales_etckt_1rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_etckt_6rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_etckt_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "net_sales_etckt_all",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "cluster_evol_nb_24_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "cluster_evol_nb_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "cluster_evol_net_sales_24_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "cluster_evol_net_sales_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "percent_evol_net_sales_12rm",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "slice_evol_net_sales_12rm",
+				"type": "varchar"
+			},
+			{
+				"name": "customer_activity_xcanal_12rm_lastyear",
+				"type": "varchar"
+			},
+			{
+				"name": "rfm_cluster_lastyear",
+				"type": "varchar"
+			},
+			{
+				"name": "cluster_style_lastyear",
+				"type": "varchar"
+			},
+			{
+				"name": "flag_anonymous",
+				"type": "varchar"
+			},
+			{
+				"name": "dt_observation",
+				"type": "varchar"
+			},
+			{
+				"name": "tec_dt_insert",
+				"type": "varchar"
+			},
+			{
+				"name": "period",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "",
+			"table": {
+				"value": "@dataset().tablename",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

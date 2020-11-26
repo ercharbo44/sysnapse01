@@ -1,0 +1,54 @@
+{
+	"name": "SourceDataset_i7e",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "myec44synapse-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "test_data.csv",
+				"fileSystem": "demo"
+			},
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "tipped",
+				"type": "String"
+			},
+			{
+				"name": "fareAmount",
+				"type": "String"
+			},
+			{
+				"name": "paymentType",
+				"type": "String"
+			},
+			{
+				"name": "passengerCount",
+				"type": "String"
+			},
+			{
+				"name": "tripDistance",
+				"type": "String"
+			},
+			{
+				"name": "tripTimeSecs",
+				"type": "String"
+			},
+			{
+				"name": "pickupTimeBin",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

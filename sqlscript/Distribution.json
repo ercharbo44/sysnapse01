@@ -1,0 +1,16 @@
+{
+	"name": "Distribution",
+	"properties": {
+		"content": {
+			"query": "select\nOBJ.name as table_name\n,COL.name as column_name\n,NT.distribution_id\n,NP.partition_id\n,NP.rows as partition_rows\n,NP.data_compression_desc\n,NCSS.segment_id\n,NCSS.version\n,NCSS.min_data_id\n,NCSS.max_data_id\n,NCSS.row_count\nfrom\nsys.objects OBJ\nJOIN sys.columns as COL ON\nOBJ.object_id = COL.object_id\nJOIN sys.pdw_table_mappings TM ON\nOBJ.object_id = TM.object_id\nJOIN sys.pdw_nodes_tables as NT on\nTM.physical_name = NT.name\nJOIN sys.pdw_nodes_partitions NP on\nNT.object_id = NP.object_id\nand NT.pdw_node_id = NP.pdw_node_id\nand substring(TM.physical_name, 40, 10) = NP.distribution_id\nJOIN sys.pdw_nodes_column_store_segments NCSS on\nNP.partition_id = NCSS.partition_id\nand NP.distribution_id = NCSS.distribution_id\nand COL.column_id = NCSS.column_id\nwhere\nOBJ.name = 'smack'\nand COL.name = 'customer_rowid'\nand TM.physical_name not like '%HdTable%'\norder by\nNT.distribution_id",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "SQLDB1",
+				"type": "SqlPool"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

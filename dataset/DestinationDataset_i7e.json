@@ -1,0 +1,52 @@
+{
+	"name": "DestinationDataset_i7e",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [
+			{
+				"name": "tipped",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "fareAmount",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "paymentType",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "passengerCount",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "tripDistance",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "tripTimeSecs",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "pickupTimeBin",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "nyc_taxi"
+		},
+		"sqlPool": {
+			"referenceName": "SQLDB1",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

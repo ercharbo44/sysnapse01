@@ -1,0 +1,790 @@
+{
+	"name": "SourceDataset_ihq",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "myec44synapse-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "smack",
+				"fileSystem": "smack"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "customer_rowid",
+				"type": "BINARY"
+			},
+			{
+				"name": "customer_create_date",
+				"type": "BINARY"
+			},
+			{
+				"name": "gender",
+				"type": "BINARY"
+			},
+			{
+				"name": "loyalty_card",
+				"type": "INT_64"
+			},
+			{
+				"name": "loyalty_card_status",
+				"type": "BINARY"
+			},
+			{
+				"name": "personnel_kiabi",
+				"type": "BINARY"
+			},
+			{
+				"name": "flag_shared_loyalty_card",
+				"type": "BINARY"
+			},
+			{
+				"name": "customer_country",
+				"type": "BINARY"
+			},
+			{
+				"name": "customer_country_label",
+				"type": "BINARY"
+			},
+			{
+				"name": "birthdate",
+				"type": "BINARY"
+			},
+			{
+				"name": "slice_age",
+				"type": "BINARY"
+			},
+			{
+				"name": "address_quality_score",
+				"type": "INT_64"
+			},
+			{
+				"name": "top_has_address",
+				"type": "BINARY"
+			},
+			{
+				"name": "top_has_telfixe",
+				"type": "BINARY"
+			},
+			{
+				"name": "top_has_gsm",
+				"type": "BINARY"
+			},
+			{
+				"name": "top_has_optinsms",
+				"type": "BINARY"
+			},
+			{
+				"name": "optin_email_kiabi",
+				"type": "BINARY"
+			},
+			{
+				"name": "optin_email_part",
+				"type": "BINARY"
+			},
+			{
+				"name": "nb_child",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_child_boy",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_child_girl",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_child_unknown",
+				"type": "INT_64"
+			},
+			{
+				"name": "first_purchase_date",
+				"type": "BINARY"
+			},
+			{
+				"name": "first_ticket_date",
+				"type": "BINARY"
+			},
+			{
+				"name": "first_order_date",
+				"type": "BINARY"
+			},
+			{
+				"name": "most_used_tckt_pay",
+				"type": "BINARY"
+			},
+			{
+				"name": "most_used_tckt_pay_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "code_store_lastpurchase",
+				"type": "BINARY"
+			},
+			{
+				"name": "lati_store_lastpurchase",
+				"type": "BINARY"
+			},
+			{
+				"name": "long_store_lastpurchase",
+				"type": "BINARY"
+			},
+			{
+				"name": "tckt_last_purchase_date",
+				"type": "BINARY"
+			},
+			{
+				"name": "order_last_purchase_date",
+				"type": "BINARY"
+			},
+			{
+				"name": "last_purchase_date",
+				"type": "BINARY"
+			},
+			{
+				"name": "code_store_attac",
+				"type": "BINARY"
+			},
+			{
+				"name": "lati_store_attac",
+				"type": "BINARY"
+			},
+			{
+				"name": "long_store_attac",
+				"type": "BINARY"
+			},
+			{
+				"name": "code_store_open",
+				"type": "BINARY"
+			},
+			{
+				"name": "lati_store_open",
+				"type": "BINARY"
+			},
+			{
+				"name": "long_store_open",
+				"type": "BINARY"
+			},
+			{
+				"name": "nb_product_tckt_maternity_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_1rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_6rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_18rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_24rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_36rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_48rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_all",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_1rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_6rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_18rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_24rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_36rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_48rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_all",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_product_order_maternity_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_1rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_6rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_18rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_24rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_36rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_48rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_all",
+				"type": "INT_64"
+			},
+			{
+				"name": "most_used_order_delivery",
+				"type": "BINARY"
+			},
+			{
+				"name": "nb_order_desk_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_mobile_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_other_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "most_used_order_pay",
+				"type": "BINARY"
+			},
+			{
+				"name": "most_used_order_pay_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "nb_tckt_articles_1rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_articles_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_articles_all",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_articles_1rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_articles_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_tckt_return_articles_all",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_articles_1rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_articles_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "net_sales_tckt_1rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_tckt_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_tckt_all",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_tckt_return_1rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_tckt_return_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_tckt_return_all",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_order_1rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_order_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "nb_order_eresa_1rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_eresa_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_order_eresa_all",
+				"type": "INT_64"
+			},
+			{
+				"name": "potentiel_net_sales_eresa_1rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "potentiel_net_sales_eresa_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "potentiel_net_sales_eresa_all",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "customer_activity_kind_1rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "customer_activity_kind_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "customer_activity_xcanal_1rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "customer_activity_xcanal_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "customer_activity_xcanal_all",
+				"type": "BINARY"
+			},
+			{
+				"name": "product_groups_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "product_groups_1rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "product_groups_all",
+				"type": "BINARY"
+			},
+			{
+				"name": "rfm_date_observation",
+				"type": "BINARY"
+			},
+			{
+				"name": "rfm_min_date",
+				"type": "BINARY"
+			},
+			{
+				"name": "rfm_t1",
+				"type": "INT_64"
+			},
+			{
+				"name": "rfm_t2",
+				"type": "INT_64"
+			},
+			{
+				"name": "rfm_t3",
+				"type": "INT_64"
+			},
+			{
+				"name": "rfm_t4",
+				"type": "INT_64"
+			},
+			{
+				"name": "rfm_frequence",
+				"type": "INT_64"
+			},
+			{
+				"name": "rfm_sum_ca_ttc",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "rfm_scorerfm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "rfm_classerfm",
+				"type": "BINARY"
+			},
+			{
+				"name": "rfm_cluster",
+				"type": "BINARY"
+			},
+			{
+				"name": "cluster_style",
+				"type": "BINARY"
+			},
+			{
+				"name": "net_sales_grbaby_fashion_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grbaby_basic_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grbaby_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grkids_fashion_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grkids_basic_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grkids_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grwomen_fashion_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grwomen_basic_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grwomen_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grmen_fashion_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grmen_basic_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grmen_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grunderwear_fashion_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grunderwear_basic_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grunderwear_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grshoes_fashion_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grshoes_basic_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grshoes_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_graccess_fashion_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_graccess_basic_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_graccess_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grexcluweb_fashion_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grexcluweb_basic_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_grexcluweb_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "xcanal_cluster_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "attac_store_dist",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "nearest_store",
+				"type": "BINARY"
+			},
+			{
+				"name": "nearest_store_dist",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_tckt_pvi_1rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_tckt_pvi_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_order_pvi_1rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_order_pvi_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "class_grwomen",
+				"type": "BINARY"
+			},
+			{
+				"name": "class_grmen",
+				"type": "BINARY"
+			},
+			{
+				"name": "class_grshoes",
+				"type": "BINARY"
+			},
+			{
+				"name": "class_grbaby",
+				"type": "BINARY"
+			},
+			{
+				"name": "class_grexcluweb",
+				"type": "BINARY"
+			},
+			{
+				"name": "class_graccess",
+				"type": "BINARY"
+			},
+			{
+				"name": "class_grconsign",
+				"type": "BINARY"
+			},
+			{
+				"name": "class_grhome",
+				"type": "BINARY"
+			},
+			{
+				"name": "class_grkids",
+				"type": "BINARY"
+			},
+			{
+				"name": "class_grunderwear",
+				"type": "BINARY"
+			},
+			{
+				"name": "first_purchase_canal",
+				"type": "BINARY"
+			},
+			{
+				"name": "slice_first_purchase_date",
+				"type": "BINARY"
+			},
+			{
+				"name": "score_mixite",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "main_appetence",
+				"type": "BINARY"
+			},
+			{
+				"name": "secondary_appetence",
+				"type": "BINARY"
+			},
+			{
+				"name": "marketappetence",
+				"type": "BINARY"
+			},
+			{
+				"name": "departmentappetence",
+				"type": "BINARY"
+			},
+			{
+				"name": "net_sales_tckt_6rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_tckt_18rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_tckt_24rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_tckt_36rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_order_6rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_order_18rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_order_24rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_order_36rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_order_all",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "nb_etckt_1rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_etckt_6rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_etckt_12rm",
+				"type": "INT_64"
+			},
+			{
+				"name": "nb_etckt_all",
+				"type": "INT_64"
+			},
+			{
+				"name": "net_sales_etckt_1rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_etckt_6rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_etckt_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "net_sales_etckt_all",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "cluster_evol_nb_24_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "cluster_evol_nb_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "cluster_evol_net_sales_24_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "cluster_evol_net_sales_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "percent_evol_net_sales_12rm",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "slice_evol_net_sales_12rm",
+				"type": "BINARY"
+			},
+			{
+				"name": "customer_activity_xcanal_12rm_lastyear",
+				"type": "BINARY"
+			},
+			{
+				"name": "rfm_cluster_lastyear",
+				"type": "BINARY"
+			},
+			{
+				"name": "cluster_style_lastyear",
+				"type": "BINARY"
+			},
+			{
+				"name": "flag_anonymous",
+				"type": "BINARY"
+			},
+			{
+				"name": "dt_observation",
+				"type": "BINARY"
+			},
+			{
+				"name": "tec_dt_insert",
+				"type": "BINARY"
+			},
+			{
+				"name": "period",
+				"type": "BINARY"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

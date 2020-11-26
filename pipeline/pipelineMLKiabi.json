@@ -1,0 +1,30 @@
+{
+	"name": "pipelineMLKiabi",
+	"properties": {
+		"activities": [
+			{
+				"name": "PreparationForML",
+				"type": "SqlPoolStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"sqlPool": {
+					"referenceName": "SQLDB1",
+					"type": "SqlPoolReference"
+				},
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[SmackprepCSV]"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-11-25T09:15:11Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

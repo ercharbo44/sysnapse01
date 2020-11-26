@@ -1,0 +1,97 @@
+{
+	"name": "Hacksample",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "Spark1",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2
+		},
+		"metadata": {
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/e6fcac13-b9bc-4f47-af3e-dfa48d717c6d/resourceGroups/rgsynapseec44/providers/Microsoft.Synapse/workspaces/myec44synapse/bigDataPools/Spark1",
+				"name": "Spark1",
+				"type": "Spark",
+				"endpoint": "https://myec44synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/Spark1",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28
+			}
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\n",
+					"dbo_orders_names = [\n",
+					"  'SourceSystemOrderID',\n",
+					"  'CustomerID',\n",
+					"  'OrderDate',\n",
+					"  'ShipDate',\n",
+					"  'TotalCost',\n",
+					"  'OrderCreatedDate',\n",
+					"  'OrderUpdatedDate'\n",
+					"]\n",
+					"\n",
+					"dbo_orders = spark.read.csv('abfss://demodatabricks@datalakeec44.dfs.core.windows.net/dboOrders.csv', header=True, inferSchema=True)\n",
+					"dbo_orders = dbo_orders.toDF(*dbo_orders_names)\n",
+					"\n",
+					"# display(dbo_orders)\n",
+					"dbo_orders.show(10)"
+				],
+				"attachments": null,
+				"execution_count": 8
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"dbo_order_details_names = [\n",
+					"  'OrderDetailID',\n",
+					"  'SourceSystemOrderID',\n",
+					"  'MovieID',\n",
+					"  'Quantity',\n",
+					"  'UnitCost',\n",
+					"  'LineNumber',\n",
+					"  'OrderDetailCreatedDate',\n",
+					"  'OrderDetailUpdatedDate'\n",
+					"]\n",
+					"dbo_order_details = spark.read.csv(\"abfss://demodatabricks@datalakeec44.dfs.core.windows.net/dboOrderDetails.csv\", header=True, inferSchema=True)\n",
+					"dbo_order_details = dbo_order_details.toDF(*dbo_order_details_names)\n",
+					"dbo_order_details.show(10)\n",
+					""
+				],
+				"attachments": null,
+				"execution_count": 10
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"dbo_customer = spark.read.csv(\"abfss://demodatabricks@datalakeec44.dfs.core.windows.net/dboCustomers.csv\", header=True, inferSchema=True)\n",
+					"dbo_customer.show(10)"
+				],
+				"attachments": null,
+				"execution_count": 14
+			}
+		]
+	}
+}

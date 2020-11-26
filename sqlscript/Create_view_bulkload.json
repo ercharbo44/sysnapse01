@@ -1,0 +1,16 @@
+{
+	"name": "Create_view_bulkload",
+	"properties": {
+		"content": {
+			"query": "Use KiabiPOC\nGO\nDROP VIEW IF EXISTS smackview;\nGO\n\nCREATE VIEW smackview AS\nSELECT\n    *\nFROM\n    OPENROWSET(\n        BULK 'https://myec44datalake.dfs.core.windows.net/smack/smack/',\n        FORMAT='PARQUET'\n    ) AS [result];\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "master",
+				"type": "SqlOnDemand"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

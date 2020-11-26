@@ -1,0 +1,170 @@
+{
+	"name": "Introduction EC-01",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "Spark1",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2,
+			"conf": {
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2"
+			}
+		},
+		"metadata": {
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/e6fcac13-b9bc-4f47-af3e-dfa48d717c6d/resourceGroups/rgsynapseec44/providers/Microsoft.Synapse/workspaces/myec44synapse/bigDataPools/Spark1",
+				"name": "Spark1",
+				"type": "Spark",
+				"endpoint": "https://myec44synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/Spark1",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28,
+				"extraHeader": null
+			}
+		},
+		"cells": [
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"\r\n",
+					"# Synapse Introduction\r\n",
+					"\r\n",
+					"## Vision globale de la plateforme\r\n",
+					"\r\n",
+					"**Liste des services**\r\n",
+					" \r\n",
+					"![Synapse01](https://myec44datalake.blob.core.windows.net/images/Synapse-Intro-01.png)\r\n",
+					""
+				],
+				"attachments": null
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"\r\n",
+					"**La plateforme est extensible aux services tiers**\r\n",
+					"\r\n",
+					"![Synapse02](https://myec44datalake.blob.core.windows.net/images/Synapse-Intro-02.png)\r\n",
+					""
+				],
+				"attachments": null
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# DEMOS #\r\n",
+					"\r\n",
+					"## 1 - TOUR - ##\r\n",
+					"- Comment installer depuis le portail ? \r\n",
+					"\r\n",
+					"- Visite du Studio\r\n",
+					"\r\n",
+					"## 2 - DEMO 1er exemple ##\r\n",
+					"Transformation en Pyspark depuis un SQL Pool - Demo EC-01\r\n",
+					"\r\n",
+					"## 3 - DEMO de Federated Queries ##\r\n",
+					"A recréer avec Synapse Link pour CosmosDB\r\n",
+					"\r\n",
+					"## 4 - Analyse de datasets avec SQL On Demand\r\n",
+					"SQL Notebook : On Demand to Analyse Data\r\n",
+					"\r\n",
+					"## 5 - Pipelines ##\r\n",
+					"Exemple copie dpuis S3 vers Datalake puis transformation en Spark. \r\n",
+					"\r\n",
+					"## 6 - Deep Dive SQL Pool ##\r\n",
+					"Presentation  +  HackLoading SQL Notebook\r\n",
+					"\r\n",
+					"## 7 - Integration avec PowerBI ##\r\n",
+					"NYC-Taxi demo\r\n",
+					"\r\n",
+					"## 8 - Integration avec Azure ML ##\r\n",
+					"Utilisation d'un modele de machine Learning dans Synapse Pool (ex: nyc-taxi)\r\n",
+					"\r\n",
+					"## 9 - Demo Delta ##\r\n",
+					"Notebook Deltalake\r\n",
+					"\r\n",
+					"## 10 - Roadmap ##\r\n",
+					"General Availability et what next ? \r\n",
+					"\r\n",
+					""
+				],
+				"attachments": null
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"## Synapse LINK\r\n",
+					"\r\n",
+					"*Ex avec CosmosDB*\r\n",
+					" \r\n",
+					"![SynapseLink](https://myec44datalake.blob.core.windows.net/images/synapse-link.png)"
+				],
+				"attachments": null
+			},
+			{
+				"cell_type": "markdown",
+				"metadata": {
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"# Roadmap #\r\n",
+					"![Synapse01](https://myec44datalake.blob.core.windows.net/images/Roadmap-Q2-21.png)\r\n",
+					""
+				],
+				"attachments": null
+			}
+		]
+	}
+}

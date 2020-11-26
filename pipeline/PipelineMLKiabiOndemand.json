@@ -1,0 +1,2401 @@
+{
+	"name": "PipelineMLKiabiOndemand",
+	"properties": {
+		"activities": [
+			{
+				"name": "Stored procedure1",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[Smackprepond]"
+				},
+				"linkedServiceName": {
+					"referenceName": "linkedService1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Stored procedure1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "customer_rowid",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "customer_rowid",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_create_date",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "customer_create_date",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "gender",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "gender",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "loyalty_card",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "loyalty_card",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "loyalty_card_status",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "loyalty_card_status",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "personnel_kiabi",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "personnel_kiabi",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "flag_shared_loyalty_card",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "flag_shared_loyalty_card",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_country",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "customer_country",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_country_label",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "customer_country_label",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "birthdate",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "birthdate",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "slice_age",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "slice_age",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "address_quality_score",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "address_quality_score",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "top_has_address",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "top_has_address",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "top_has_telfixe",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "top_has_telfixe",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "top_has_gsm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "top_has_gsm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "top_has_optinsms",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "top_has_optinsms",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "optin_email_kiabi",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "optin_email_kiabi",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "optin_email_part",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "optin_email_part",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_child",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_child",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_child_boy",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_child_boy",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_child_girl",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_child_girl",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_child_unknown",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_child_unknown",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "first_purchase_date",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "first_purchase_date",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "first_ticket_date",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "first_ticket_date",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "first_order_date",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "first_order_date",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "most_used_tckt_pay",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "most_used_tckt_pay",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "most_used_tckt_pay_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "most_used_tckt_pay_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "code_store_lastpurchase",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "code_store_lastpurchase",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "lati_store_lastpurchase",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "lati_store_lastpurchase",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "long_store_lastpurchase",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "long_store_lastpurchase",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tckt_last_purchase_date",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "tckt_last_purchase_date",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "order_last_purchase_date",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "order_last_purchase_date",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "last_purchase_date",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "last_purchase_date",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "code_store_attac",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "code_store_attac",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "lati_store_attac",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "lati_store_attac",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "long_store_attac",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "long_store_attac",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "code_store_open",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "code_store_open",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "lati_store_open",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "lati_store_open",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "long_store_open",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "long_store_open",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_product_tckt_maternity_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_product_tckt_maternity_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_1rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_1rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_6rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_6rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_18rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_18rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_24rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_24rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_36rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_36rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_48rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_48rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_all",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_all",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_1rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_1rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_6rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_6rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_18rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_18rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_24rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_24rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_36rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_36rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_48rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_48rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_all",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_all",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_product_order_maternity_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_product_order_maternity_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_1rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_1rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_6rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_6rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_18rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_18rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_24rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_24rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_36rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_36rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_48rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_48rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_all",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_all",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "most_used_order_delivery",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "most_used_order_delivery",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_desk_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_desk_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_mobile_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_mobile_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_other_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_other_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "most_used_order_pay",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "most_used_order_pay",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "most_used_order_pay_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "most_used_order_pay_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_articles_1rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_articles_1rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_articles_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_articles_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_articles_all",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_articles_all",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_articles_1rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_articles_1rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_articles_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_articles_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_tckt_return_articles_all",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_tckt_return_articles_all",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_articles_1rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_articles_1rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_articles_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_articles_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_1rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_1rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_all",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_all",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_return_1rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_return_1rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_return_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_return_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_return_all",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_return_all",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_order_1rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_order_1rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_order_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_order_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_eresa_1rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_eresa_1rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_eresa_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_eresa_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_order_eresa_all",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_order_eresa_all",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "potentiel_net_sales_eresa_1rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "potentiel_net_sales_eresa_1rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "potentiel_net_sales_eresa_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "potentiel_net_sales_eresa_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "potentiel_net_sales_eresa_all",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "potentiel_net_sales_eresa_all",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_activity_kind_1rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "customer_activity_kind_1rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_activity_kind_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "customer_activity_kind_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_activity_xcanal_1rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "customer_activity_xcanal_1rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_activity_xcanal_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "customer_activity_xcanal_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_activity_xcanal_all",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "customer_activity_xcanal_all",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "product_groups_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "product_groups_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "product_groups_1rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "product_groups_1rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "product_groups_all",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "product_groups_all",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_date_observation",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "rfm_date_observation",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_min_date",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "rfm_min_date",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_t1",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "rfm_t1",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_t2",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "rfm_t2",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_t3",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "rfm_t3",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_t4",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "rfm_t4",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_frequence",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "rfm_frequence",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_sum_ca_ttc",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "rfm_sum_ca_ttc",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_scorerfm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "rfm_scorerfm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_classerfm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "rfm_classerfm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_cluster",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "rfm_cluster",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cluster_style",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "cluster_style",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grbaby_fashion_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grbaby_fashion_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grbaby_basic_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grbaby_basic_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grbaby_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grbaby_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grkids_fashion_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grkids_fashion_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grkids_basic_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grkids_basic_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grkids_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grkids_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grwomen_fashion_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grwomen_fashion_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grwomen_basic_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grwomen_basic_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grwomen_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grwomen_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grmen_fashion_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grmen_fashion_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grmen_basic_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grmen_basic_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grmen_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grmen_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grunderwear_fashion_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grunderwear_fashion_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grunderwear_basic_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grunderwear_basic_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grunderwear_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grunderwear_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grshoes_fashion_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grshoes_fashion_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grshoes_basic_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grshoes_basic_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grshoes_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grshoes_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_graccess_fashion_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_graccess_fashion_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_graccess_basic_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_graccess_basic_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_graccess_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_graccess_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grexcluweb_fashion_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grexcluweb_fashion_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grexcluweb_basic_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grexcluweb_basic_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_grexcluweb_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_grexcluweb_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "xcanal_cluster_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "xcanal_cluster_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "attac_store_dist",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "attac_store_dist",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "nearest_store",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "nearest_store",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "nearest_store_dist",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "nearest_store_dist",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_pvi_1rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_pvi_1rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_pvi_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_pvi_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_order_pvi_1rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_order_pvi_1rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_order_pvi_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_order_pvi_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "class_grwomen",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "class_grwomen",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "class_grmen",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "class_grmen",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "class_grshoes",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "class_grshoes",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "class_grbaby",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "class_grbaby",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "class_grexcluweb",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "class_grexcluweb",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "class_graccess",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "class_graccess",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "class_grconsign",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "class_grconsign",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "class_grhome",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "class_grhome",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "class_grkids",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "class_grkids",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "class_grunderwear",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "class_grunderwear",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "first_purchase_canal",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "first_purchase_canal",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "slice_first_purchase_date",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "slice_first_purchase_date",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "score_mixite",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "score_mixite",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "main_appetence",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "main_appetence",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "secondary_appetence",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "secondary_appetence",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "marketappetence",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "marketappetence",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "departmentappetence",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "departmentappetence",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_6rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_6rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_18rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_18rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_24rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_24rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_tckt_36rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_tckt_36rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_order_6rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_order_6rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_order_18rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_order_18rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_order_24rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_order_24rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_order_36rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_order_36rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_order_all",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_order_all",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_etckt_1rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_etckt_1rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_etckt_6rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_etckt_6rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_etckt_12rm",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_etckt_12rm",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "nb_etckt_all",
+									"type": "Int64",
+									"physicalType": "bigint"
+								},
+								"sink": {
+									"name": "nb_etckt_all",
+									"type": "Int64",
+									"physicalType": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_etckt_1rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_etckt_1rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_etckt_6rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_etckt_6rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_etckt_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_etckt_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "net_sales_etckt_all",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "net_sales_etckt_all",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "cluster_evol_nb_24_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "cluster_evol_nb_24_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cluster_evol_nb_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "cluster_evol_nb_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cluster_evol_net_sales_24_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "cluster_evol_net_sales_24_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cluster_evol_net_sales_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "cluster_evol_net_sales_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "percent_evol_net_sales_12rm",
+									"type": "Double",
+									"physicalType": "float"
+								},
+								"sink": {
+									"name": "percent_evol_net_sales_12rm",
+									"type": "Double",
+									"physicalType": "Double"
+								}
+							},
+							{
+								"source": {
+									"name": "slice_evol_net_sales_12rm",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "slice_evol_net_sales_12rm",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "customer_activity_xcanal_12rm_lastyear",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "customer_activity_xcanal_12rm_lastyear",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "rfm_cluster_lastyear",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "rfm_cluster_lastyear",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "cluster_style_lastyear",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "cluster_style_lastyear",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "flag_anonymous",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "flag_anonymous",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "dt_observation",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "dt_observation",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "tec_dt_insert",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "tec_dt_insert",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "period",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "period",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureSqlTablesmackET",
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": "smack_et"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CSVFORML",
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": "smack_et"
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-11-24T09:26:23Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

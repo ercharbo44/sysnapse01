@@ -1,0 +1,19 @@
+{
+	"name": "SourceDataset_wfs",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DatalakeKiabiKeySAS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "smack_06_2020_gcp",
+				"fileSystem": "poc"
+			}
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

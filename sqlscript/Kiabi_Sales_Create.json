@@ -1,0 +1,16 @@
+{
+	"name": "Kiabi_Sales_Create",
+	"properties": {
+		"content": {
+			"query": "DROP TABLE [Kiabi].[Sales]\nIF NOT EXISTS (SELECT * FROM sys.objects WHERE NAME = '[Sales]' AND TYPE = 'U')\nCREATE TABLE [Kiabi].[Sales]\n\t(\n\t day_id varchar(30),\n\t style_id varchar(30),\n\t color_id varchar(30),\n\t size_id varchar(30),\n\t store_id varchar(30),\n\t sales_channel_id varchar(30),\n\t sales_unitlong float,\n\t currency_id varchar(30),\n\t sales_revenue float,\n\t sales_revenue_vat float,\n\t sales_cost float,\n\t sales_markdowns_pos float,\n\t returns_unit bigint,\n\t returns_retail float,\n\t returns_cost float,\n\t type_evenement varchar(30),\n\t date_integration bigint,\n\t date_evenement bigint\n\t)\nWITH\n\t(\n\tDISTRIBUTION = ROUND_ROBIN,\n\t CLUSTERED COLUMNSTORE INDEX\n\t -- HEAP\n\t)\nGO\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "SQLDB1",
+				"type": "SqlPool"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

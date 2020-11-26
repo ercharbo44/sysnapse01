@@ -1,0 +1,17 @@
+{
+	"name": "lab1",
+	"type": "Microsoft.Synapse/workspaces/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://lasvegasreadylake.blob.core.windows.net/?sv=2019-12-12&ss=b&srt=sc&sp=rl&se=2020-07-31T21:16:34Z&st=2020-07-20T13:16:34Z&spr=https&sig=9knpeexDWbUL%2FVE1QNEb3oMNapPRSiH8xdks5MKJmMI%3D",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,74 @@
+{
+	"name": "SourceDataset_9ik",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AmazonS31",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "echar44blob",
+				"folderPath": "demo",
+				"fileName": "world_cup_match.csv"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Year",
+				"type": "String"
+			},
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Time",
+				"type": "String"
+			},
+			{
+				"name": "Round",
+				"type": "String"
+			},
+			{
+				"name": "Stadium",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "Country",
+				"type": "String"
+			},
+			{
+				"name": "HomeTeam",
+				"type": "String"
+			},
+			{
+				"name": "HomeGoals",
+				"type": "String"
+			},
+			{
+				"name": "AwayGoals",
+				"type": "String"
+			},
+			{
+				"name": "AwayTeam",
+				"type": "String"
+			},
+			{
+				"name": "Observation",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

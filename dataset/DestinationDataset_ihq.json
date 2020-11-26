@@ -1,0 +1,17 @@
+{
+	"name": "DestinationDataset_ihq",
+	"properties": {
+		"annotations": [],
+		"type": "SqlPoolTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "Kiabi",
+			"table": "smack1"
+		},
+		"sqlPool": {
+			"referenceName": "SQLDB1",
+			"type": "SqlPoolReference"
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

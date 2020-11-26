@@ -1,0 +1,84 @@
+{
+	"name": "SourceDataset_jmg",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AmazonS31",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "echar44blob"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "tripduration",
+				"type": "String"
+			},
+			{
+				"name": "starttime",
+				"type": "String"
+			},
+			{
+				"name": "stoptime",
+				"type": "String"
+			},
+			{
+				"name": "start station id",
+				"type": "String"
+			},
+			{
+				"name": "start station name",
+				"type": "String"
+			},
+			{
+				"name": "start station latitude",
+				"type": "String"
+			},
+			{
+				"name": "start station longitude",
+				"type": "String"
+			},
+			{
+				"name": "end station id",
+				"type": "String"
+			},
+			{
+				"name": "end station name",
+				"type": "String"
+			},
+			{
+				"name": "end station latitude",
+				"type": "String"
+			},
+			{
+				"name": "end station longitude",
+				"type": "String"
+			},
+			{
+				"name": "bikeid",
+				"type": "String"
+			},
+			{
+				"name": "usertype",
+				"type": "String"
+			},
+			{
+				"name": "birth year",
+				"type": "String"
+			},
+			{
+				"name": "gender",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

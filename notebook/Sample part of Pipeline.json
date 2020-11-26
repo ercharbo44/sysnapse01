@@ -1,0 +1,88 @@
+{
+	"name": "Sample part of Pipeline",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "Spark1",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2
+		},
+		"metadata": {
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/e6fcac13-b9bc-4f47-af3e-dfa48d717c6d/resourceGroups/rgsynapseec44/providers/Microsoft.Synapse/workspaces/myec44synapse/bigDataPools/Spark1",
+				"name": "Spark1",
+				"type": "Spark",
+				"endpoint": "https://myec44synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/Spark1",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28
+			}
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"\r\n",
+					"matchs_names = [\r\n",
+					"  'Year',\r\n",
+					"  'Date',\r\n",
+					"  'Time',\r\n",
+					"  'Round',\r\n",
+					"  'Stadium',\r\n",
+					"  'City',\r\n",
+					"  'Country',\r\n",
+					"  'HomeTeam',\r\n",
+					"  'HomeGoals',\r\n",
+					"  'AwayGoals',\r\n",
+					"  'AwayTeam',\r\n",
+					"  'Observation'\r\n",
+					"]\r\n",
+					"\r\n",
+					"\r\n",
+					"# dfwcup = spark.read.load('abfss://demo@myec44datalake.dfs.core.windows.net/AWS/world_cup_match.csv', format='text')\r\n",
+					"dfwcup = spark.read.csv('abfss://demo@myec44datalake.dfs.core.windows.net/AWS/world_cup_match.csv', header=True, inferSchema=True)\r\n",
+					"dfwcup = dfwcup.toDF(*matchs_names)\r\n",
+					"\r\n",
+					"dftest=dfwcup.drop('Observation')\r\n",
+					"dftest.show(10)\r\n",
+					"\r\n",
+					"spark.sql(\"CREATE DATABASE IF NOT EXISTS mydemo\")\r\n",
+					"dftest.write.saveAsTable(\"mydemo.wordcupmatch\")\r\n",
+					"\r\n",
+					"\r\n",
+					"##(dftest.write\r\n",
+					"##    .mode('overwrite')\r\n",
+					"##    .save('abfss://demo@myec44datalake.dfs.core.windows.net/AWS/world_cup_match_new.csv')\r\n",
+					"##)"
+				],
+				"attachments": null,
+				"execution_count": 1
+			}
+		]
+	}
+}

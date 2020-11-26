@@ -1,0 +1,16 @@
+{
+	"name": "SQL script 1",
+	"properties": {
+		"content": {
+			"query": "-- List the permissions for your user\nselect  princ.name\n,       princ.type_desc\n,       perm.permission_name\n,       perm.state_desc\n,       perm.class_desc\n,       object_name(perm.major_id)\nfrom    sys.database_principals princ\nleft join\n        sys.database_permissions perm\non      perm.grantee_principal_id = princ.principal_id\nwhere name = 'adminricou';\n\n--Make sure your user has the permissions to CREATE tables in the [dbo] schema\nGRANT CREATE TABLE TO adminricou;\nGRANT ALTER ON SCHEMA::dbo TO adminricou;\n\n--Make sure your user has ADMINISTER DATABASE BULK OPERATIONS permissions\nGRANT ADMINISTER DATABASE BULK OPERATIONS TO adminricou\n\n--Make sure your user has INSERT permissions on the target table\nGRANT INSERT ON [dbo].[Trip1] TO adminricou\n\nCREATE TABLE [dbo].[Trip1]\n(\n    [DateID] int NOT NULL,\n    [MedallionID] int NOT NULL,\n    [HackneyLicenseID] int NOT NULL,\n    [PickupTimeID] int NOT NULL,\n    [DropoffTimeID] int NOT NULL,\n    [PickupGeographyID] int NULL,\n    [DropoffGeographyID] int NULL,\n    [PickupLatitude] float NULL,\n    [PickupLongitude] float NULL,\n    [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,\n    [DropoffLatitude] float NULL,\n    [DropoffLongitude] float NULL,\n    [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,\n    [PassengerCount] int NULL,\n    [TripDurationSeconds] int NULL,\n    [TripDistanceMiles] float NULL,\n    [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,\n    [FareAmount] money NULL,\n    [SurchargeAmount] money NULL,\n    [TaxAmount] money NULL,\n    [TipAmount] money NULL,\n    [TollsAmount] money NULL,\n    [TotalAmount] money NULL\n)\nWITH\n(\n    DISTRIBUTION = ROUND_ROBIN,\n    CLUSTERED COLUMNSTORE INDEX\n);\n\nCOPY INTO [dbo].[Trip1] FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/'\nWITH (\n   FIELDTERMINATOR='|',\n   ROWTERMINATOR='0x0A'\n) OPTION (LABEL = 'COPY: dbo.trip1');\n\nSELECT  r.[request_id]                           \n,       r.[status]                               \n,       r.resource_class                         \n,       r.command\n,       sum(bytes_processed) AS bytes_processed\n,       sum(rows_processed) AS rows_processed\nFROM    sys.dm_pdw_exec_requests r\n              JOIN sys.dm_pdw_dms_workers w\n                     ON r.[request_id] = w.request_id\nWHERE [label] = 'COPY: dbo.trip1' and session_id <> session_id() and type = 'WRITER'\nGROUP BY r.[request_id]                           \n,       r.[status]                               \n,       r.resource_class                         \n,       r.command;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"name": "SQLDB1",
+				"type": "SqlPool"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"name": "DestinationDataset_wfs",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "myec44synapse-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "smack",
+				"fileSystem": "smack"
+			}
+		}
+	},
+	"type": "Microsoft.Synapse/workspaces/datasets"
+}

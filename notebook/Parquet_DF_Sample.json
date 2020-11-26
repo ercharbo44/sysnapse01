@@ -1,0 +1,100 @@
+{
+	"name": "Parquet_DF_Sample",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "Spark1",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "28g",
+			"driverCores": 4,
+			"executorMemory": "28g",
+			"executorCores": 4,
+			"numExecutors": 2
+		},
+		"metadata": {
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/e6fcac13-b9bc-4f47-af3e-dfa48d717c6d/resourceGroups/rgsynapseec44/providers/Microsoft.Synapse/workspaces/myec44synapse/bigDataPools/Spark1",
+				"name": "Spark1",
+				"type": "Spark",
+				"endpoint": "https://myec44synapse.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/Spark1",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 3,
+				"cores": 4,
+				"memory": 28
+			}
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"source": [
+					"%%pyspark\n",
+					"data_path = spark.read.load('abfss://poc@datalakekiabi1.dfs.core.windows.net/prd/data/public/stocks/predictix/product/product/20190305_233157_part-r-00000-a7ca9048-cbfd-4584-8e5b-a697a9899224.gz.parquet', format='parquet')\n",
+					"data_path.show(10)"
+				],
+				"attachments": null,
+				"execution_count": 4
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"## Get the schema & type\n",
+					"data_path.printSchema()"
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"##Get the columns\n",
+					"data_path.columns"
+				],
+				"execution_count": 9
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"## Change the column name\n",
+					"data_path.withColumnRenamed('pdm_style_id','pdmstyle_id')"
+				],
+				"execution_count": 8
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"## Remove a column \n",
+					"data_path.drop('pdm_style_id')\n",
+					"data_path.cache()\n",
+					"data_path.show(5)"
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"##Create a temp table to be able in the next cell to use the scala command write.analytics\n",
+					"data_path.createOrReplaceTempView(\"pysparkdftemptable\")"
+				],
+				"execution_count": 10
+			},
+			{
+				"cell_type": "code",
+				"source": [
+					"%%spark\n",
+					"val scala_df = spark.sqlContext.sql (\"select * from pysparkdftemptable\")\n",
+					"scala_df.write.sqlanalytics(\"SQLDB1.dbo.tabletest\",Constants.INTERNAL)"
+				],
+				"execution_count": 13
+			}
+		]
+	}
+}
